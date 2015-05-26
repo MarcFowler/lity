@@ -1,4 +1,4 @@
-(function(window, factory) {
+;(function(window, factory) {
     if (typeof define === 'function' && define.amd) {
         define(['jquery'], function($) {
             return factory(window, $);
@@ -360,11 +360,11 @@
         return popup.options(options);
     }
 
-    rv-lb.version = '@VERSION';
-    rv-lb.handlers = $.proxy(settings, rv-lb, _defaultHandlers);
-    rv-lb.options = $.proxy(settings, rv-lb, _defaultOptions);
+    rvlb.version = '@VERSION';
+    rvlb.handlers = $.proxy(settings, rvlb, _defaultHandlers);
+    rvlb.options = $.proxy(settings, rvlb, _defaultOptions);
 
-    $(document).on('click', '[data-rv-lb]', rv-lb());
+    $(document).on('click', '[data-rv-lb]', rvlb());
 
-    return rv-lb;
+    return rvlb;
 }));
