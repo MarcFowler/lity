@@ -1,14 +1,14 @@
 {
-  "name": "lity",
-  "title": "Lity",
-  "description": "Lightweight responsive lightbox.",
+  "name": "rv-lb",
+  "title": "RV Lightbox",
+  "description": "Lightweight responsive lightbox for ReactiveVideo.",
   "author": {
     "name": "Jan Sorgalla",
     "url": "http://sorgalla.com"
   },
   "homepage": "http://sorgalla.com/lity/",
   "version": "1.2.0",
-  "main": "dist/lity.js",
+  "main": "dist/rv-lb.js",
   "peerDependencies": {
     "jquery": ">=1.7"
   },

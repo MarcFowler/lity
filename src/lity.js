@@ -6,7 +6,7 @@
     } else if (typeof module === 'object' && typeof module.exports === 'object') {
         module.exports = factory(window, require('jquery'));
     } else {
-        window.lity = factory(window, window.jQuery || window.Zepto);
+        window.rvlb = factory(window, window.jQuery || window.Zepto);
     }
 }(window, function(window, $) {
     'use strict';
@@ -62,12 +62,12 @@
     }
 
     var _html = '\
-<div class="lity lity-loading" tabindex="-1">\
-    <div class="lity-wrap" data-lity-close>\
-        <div class="lity-loader">Loading...</div>\
-        <div class="lity-container">\
-            <div class="lity-content"></div>\
-            <button class="lity-close" type="button" title="Close (Esc)" data-lity-close>×</button>\
+<div class="rv-lb rv-lb-loading" tabindex="-1">\
+    <div class="rv-lb-wrap" data-rv-lb-close>\
+        <div class="rv-lb-loader">Loading...</div>\
+        <div class="rv-lb-container">\
+            <div class="rv-lb-content"></div>\
+            <button class="rv-lb-close" type="button" title="Close (Esc)" data-rv-lb-close>×</button>\
         </div>\
     </div>\
 </div>';
@@ -96,7 +96,7 @@
     }
 
     function error(msg) {
-        return $('<span class="lity-error"/>').append(msg);
+        return $('<span class="rv-lb-error"/>').append(msg);
     }
 
     function imageHandler(target) {
@@ -131,14 +131,14 @@
             return false;
         }
 
-        var placeholder = $('<span style="display:none !important" class="lity-inline-placeholder"/>');
+        var placeholder = $('<span style="display:none !important" class="rv-lb-inline-placeholder"/>');
 
         return el
             .after(placeholder)
-            .on('lity:ready', function(e, instance) {
-                instance.one('lity:close', function() {
+            .on('rv-lb:ready', function(e, instance) {
+                instance.one('rv-lb:close', function() {
                     placeholder
-                        .before(el.addClass('lity-hide'))
+                        .before(el.addClass('rv-lb-hide'))
                         .remove()
                     ;
                 });
@@ -163,10 +163,10 @@
             target += '&output=embed';
         }
 
-        return '<div class="lity-iframe-container"><iframe frameborder="0" allowfullscreen src="'+target+'"></iframe></div>';
+        return '<div class="rv-lb-iframe-container"><iframe frameborder="0" allowfullscreen src="'+target+'"></iframe></div>';
     }
 
-    function lity(options) {
+    function rvlb(options) {
         var _options = $.extend({}, _defaultOptions),
             _handlers = $.extend({}, _defaultHandlers),
             _instance,
@@ -184,7 +184,7 @@
 
             _content
                 .css('max-height', Math.floor(height) + 'px')
-                .trigger('lity:resize', [_instance, popup])
+                .trigger('rv-lb:resize', [_instance, popup])
             ;
         }
 
@@ -199,7 +199,7 @@
             resize();
 
             _instance
-                .find('.lity-loader')
+                .find('.rv-lb-loader')
                 .each(function() {
                     var el = $(this);
                     transitionEnd(el).always(function() {
@@ -209,15 +209,15 @@
             ;
 
             _instance
-                .removeClass('lity-loading')
-                .find('.lity-content')
+                .removeClass('rv-lb-loading')
+                .find('.rv-lb-content')
                 .empty()
                 .append(_content)
             ;
 
             _content
-                .removeClass('lity-hide')
-                .trigger('lity:ready', [_instance, popup])
+                .removeClass('rv-lb-hide')
+                .trigger('rv-lb:ready', [_instance, popup])
             ;
 
             _ready.resolve();
@@ -232,11 +232,11 @@
 
             setTimeout(function() {
                 _instance
-                    .addClass('lity-opened lity-' + handler)
-                    .on('click', '[data-lity-close]', function(e) {
-                        $(e.target).is('[data-lity-close]') && close();
+                    .addClass('rv-lb-opened rv-lb-' + handler)
+                    .on('click', '[data-rv-lb-close]', function(e) {
+                        $(e.target).is('[data-rv-lb-close]') && close();
                     })
-                    .trigger('lity:open', [_instance, popup])
+                    .trigger('rv-lb:open', [_instance, popup])
                 ;
 
                 $.when(content).always(ready);
@@ -301,12 +301,12 @@
                 ;
 
                 _content && _content
-                    .trigger('lity:close', [_instance, popup])
+                    .trigger('rv-lb:close', [_instance, popup])
                 ;
 
                 _instance
-                    .removeClass('lity-opened')
-                    .addClass('lity-closed')
+                    .removeClass('rv-lb-opened')
+                    .addClass('rv-lb-closed')
                 ;
 
                 var instance = _instance;
@@ -329,7 +329,7 @@
             }
 
             var el = $(this);
-            var target = el.data('lity-target') || el.attr('href') || el.attr('src');
+            var target = el.data('rv-lb-target') || el.attr('href') || el.attr('src');
 
             if (!target) {
                 return;
@@ -338,7 +338,7 @@
             var options = $.extend(
                 {},
                 _options,
-                el.data('lity-options') || el.data('lity')
+                el.data('rv-lb-options') || el.data('rv-lb')
             );
 
             open(target, options) && event.preventDefault();
@@ -360,11 +360,11 @@
         return popup.options(options);
     }
 
-    lity.version = '@VERSION';
-    lity.handlers = $.proxy(settings, lity, _defaultHandlers);
-    lity.options = $.proxy(settings, lity, _defaultOptions);
+    rv-lb.version = '@VERSION';
+    rv-lb.handlers = $.proxy(settings, rv-lb, _defaultHandlers);
+    rv-lb.options = $.proxy(settings, rv-lb, _defaultOptions);
 
-    $(document).on('click', '[data-lity]', lity());
+    $(document).on('click', '[data-rv-lb]', rv-lb());
 
-    return lity;
+    return rv-lb;
 }));

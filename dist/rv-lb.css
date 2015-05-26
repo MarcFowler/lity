@@ -1,7 +1,7 @@
-/*! Lity - v1.2.0 - 2015-05-15
+/*! RV Lightbox - v1.2.0 - 2015-05-26
 * http://sorgalla.com/lity/
 * Copyright (c) 2015 Jan Sorgalla; Licensed MIT */
-.lity {
+.rv-lb {
   z-index: 9990;
   position: fixed;
   top: 0;
@@ -17,18 +17,18 @@
        -o-transition: opacity 0.2s ease;
           transition: opacity 0.2s ease;
 }
-.lity.lity-opened {
+.rv-lb.rv-lb-opened {
   opacity: 1;
 }
-.lity.lity-closed {
+.rv-lb.rv-lb-closed {
   opacity: 0;
 }
-.lity * {
+.rv-lb * {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
 }
-.lity-wrap {
+.rv-lb-wrap {
   z-index: 9990;
   position: fixed;
   top: 0;
@@ -38,14 +38,14 @@
   text-align: center;
   outline: none !important;
 }
-.lity-wrap:before {
+.rv-lb-wrap:before {
   content: '';
   display: inline-block;
   height: 100%;
   vertical-align: middle;
   margin-right: -0.25em;
 }
-.lity-loader {
+.rv-lb-loader {
   z-index: 9991;
   color: #fff;
   position: absolute;
@@ -60,10 +60,10 @@
        -o-transition: opacity 0.2s ease;
           transition: opacity 0.2s ease;
 }
-.lity-loading .lity-loader {
+.rv-lb-loading .rv-lb-loader {
   opacity: 1;
 }
-.lity-container {
+.rv-lb-container {
   z-index: 9992;
   position: relative;
   text-align: left;
@@ -78,10 +78,10 @@
        -o-transition: opacity 0.2s ease;
           transition: opacity 0.2s ease;
 }
-.lity-loading .lity-container {
+.rv-lb-loading .rv-lb-container {
   opacity: 0;
 }
-.lity-container:after {
+.rv-lb-container:after {
   content: '';
   position: absolute;
   left: 0;
@@ -95,11 +95,11 @@
   -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
           box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
 }
-.lity-content {
+.rv-lb-content {
   z-index: 9993;
   width: 100%;
 }
-.lity-close {
+.rv-lb-close {
   z-index: 9994;
   width: 35px;
   height: 35px;
@@ -123,28 +123,28 @@
   -webkit-appearance: none;
   cursor: pointer;
 }
-.lity-close:active {
+.rv-lb-close:active {
   top: 1px;
 }
 /* Image */
-.lity-image img {
+.rv-lb-image img {
   max-width: 100%;
   display: block;
   line-height: 0;
   border: 0;
 }
 /* iFrame */
-.lity-iframe .lity-container {
+.rv-lb-iframe .rv-lb-container {
   width: 100%;
   max-width: 964px;
 }
-.lity-iframe-container {
+.rv-lb-iframe-container {
   width: 100%;
   height: 0;
   overflow: hidden;
   padding-top: 56.25%;
 }
-.lity-iframe-container iframe {
+.rv-lb-iframe-container iframe {
   position: absolute;
   display: block;
   top: 0;
@@ -155,6 +155,6 @@
           box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
   background: #000;
 }
-.lity-hide {
+.rv-lb-hide {
   display: none;
 }

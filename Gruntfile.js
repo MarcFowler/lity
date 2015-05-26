@@ -64,7 +64,7 @@ module.exports = function(grunt) {
                 stripBanners: true
             },
             src: {
-                src: 'src/lity.js',
+                src: ['vendor/zepto.js', 'src/lity.js'],
                 dest: 'dist/<%= pkg.name %>.js'
             }
         },
@@ -73,7 +73,7 @@ module.exports = function(grunt) {
                 banner: '<%= banner %>'
             },
             min: {
-                src: 'src/lity.js',
+                src: 'dist/<%= pkg.name %>.js',
                 dest: 'dist/<%= pkg.name %>.min.js'
             }
         },
